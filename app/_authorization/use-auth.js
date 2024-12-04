@@ -5,44 +5,51 @@ const useAuth = () => {
     const [user, setUser] = useState(null);
 
     // Simulated API call for login
-    const login = (userName, password) => {
+    const login = (email, password) => {
         // eventually this will check the credentials passed in with the credentials in the db
         
         return (() => new Promise((resolve, reject) => {
             const credentials = [
                 {
-                    userName: 'bob',
+                    id: 1,
+                    userName: "bob",
+                    email: "bob@example.com",
+                    photoSource: "/images/erica.png",
+                    token: "abc123",
                     password: 'password'
                 }
             ]
 
             //check the credentials inputted with the credentials in the "db"
-            const credentialsFound = credentials.some(credential =>
-                credential.userName == userName && credential.password == password);
+            const credentialsFound = credentials.find(credential =>
+                credential.email == email && credential.password === password);
             
 
             if (credentialsFound) {
-                resolve(credentialsFound);
+                resolve({
+                    id: credentialsFound.id,
+                    userName: credentialsFound.userName,
+                    email: credentialsFound.email,
+                    photoSource: credentialsFound.photoSource,
+                    token: credentialsFound.token,
+                });
             } else {
                 reject("No credentials matching input found.");
             }
 
         }))()
-            .then(credentialsFound => {
+            .then(user => {
                 //the credentials don't match anything. return false.
-                if (!credentialsFound) {
-                    return credentialsFound;
+                if (!user) {
+                    return false;
                 }
-
-                //is the token needed? i'm assuming so, but we'll have to see how the backend works with authentication.
-                const user = { id: 1, userName, token: "abc123" };
 
                 //set the user object
                 setUser(user);
 
                 sessionStorage.setItem("user-auth", JSON.stringify(user))
 
-                return credentialsFound;
+                return user;
             })
             .catch(err => {
                 const msg = "ERROR: returning from validating credentials: " + err;
