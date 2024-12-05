@@ -16,9 +16,11 @@ export default function UserCard() {
 
         if (showMenu) {
             const hideMenu = () => {
-                // console.log("hiding the menu now...")
+                console.log("hiding the menu now...")
                 setShowMenu(false);
             }
+
+            console.log("showing the menu now...", showMenu)
 
             //the menu is being shown, and something has been clicked. stop showing the menu.
             // console.log("showing the menu now...")
@@ -48,7 +50,7 @@ export default function UserCard() {
                 
                 <div className="flex flex-col justify-center mr-2">
                     <p className="capitalize font-bold">{user?.userName}</p>
-                    <p className="text-gray-500">{user?.email}</p>
+                    <p className="text-gray-500 font-medium text-xs">{user?.email}</p>
                 </div>
 
                 <div onClick={() => setShowMenu(!showMenu)} className="cursor-pointer">
