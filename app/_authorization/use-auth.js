@@ -1,21 +1,10 @@
-import Axios from "axios";
+import { axios } from "@/app/_services/axios";
 import { useEffect, useState } from "react";
 
 const useAuth = () => {
     // Authentication state
     const [user, setUser] = useState(null);
     const [signedIn, setSignedIn] = useState(false);
-
-    const axios = Axios.create({
-        baseURL: process.env.NEXT_PUBLIC_BACKEND_URL,
-        headers: {
-            'X-Requested-With': 'XMLHttpRequest',
-            'Content-Type': 'application/json',
-            'Accept': 'application/json'
-        },
-        withCredentials: true,
-        withXSRFToken: true,
-    })
 
     // Simulated API call for login
     const login = (email, password) => {

@@ -20,7 +20,7 @@ export default function SideBar({ children }) {
     }, [])
 
     return (
-        <main className="flex bg-gray-100 h-screen">
+        <main className="flex bg-gray-100 h-screen w-screen">
             <section className="flex flex-col min-w-60">
                 <nav>
                     <header className="border-b p-4">
@@ -157,7 +157,7 @@ export default function SideBar({ children }) {
             </section>
 
 
-            <section className="bg-white flex-grow rounded-lg my-2 mr-2 border overflow-auto px-60">
+            <section className="bg-white flex-grow rounded-lg my-2 overflow-y-auto mr-2 border p-3">
                 {children}
             </section>
         </main>

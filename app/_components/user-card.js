@@ -46,7 +46,7 @@ export default function UserCard() {
             }
 
             <div className="flex gap-3 items-center p-3">
-                <img className="w-14 h-14" src={user?.profile_img} />
+                <img className="size-6" src={user?.profile_img} />
                 
                 <div className="flex flex-col justify-center mr-2">
                     <p className="capitalize font-bold">{user?.first_name} {user?.last_name}</p>
