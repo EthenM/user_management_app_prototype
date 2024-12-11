@@ -1,8 +1,8 @@
 "use client"
 
 import { useEffect, useState } from "react";
-import { useUserAuth } from "./_authorization/auth-context";
-import ToggleSwitch from "./_components/toggle-switch";
+import { useUserAuth } from "../_authorization/auth-context";
+import ToggleSwitch from "../_components/toggle-switch";
 
 export default function SignInPage() {
     const {user, login, logout} = useUserAuth();
@@ -23,9 +23,9 @@ export default function SignInPage() {
     }
 
     useEffect(() => {
-        if (user) {
+        if (user && JSON.stringify(user) != "{}") {
             //the user is authenticated, send them off to the main page.
-            location.pathname = "/home"
+            location.pathname = "/"
         }
     }, [user])
 
